@@ -1,14 +1,8 @@
 #include <iostream>
 
 int main() {
-	int n = 0;
-	std::cin >> n;
-	std::cout << n / 3600 % 24
-		<< ":"
-		<< n / 60 % 60 / 10
-		<< n / 60 % 60 % 10
-		<< ":"
-		<< n % 60 / 10
-		<< n % 60 % 10;
-	return 0;
+    int h1, m1, s1, h2, m2, s2 = 0;
+    std::cin >> h1 >> m1 >> s1 >> h2 >> m2 >> s2;
+    std::cout << (h2 - h1) * 3600 + (m2 - m1) * 60 + s2 - s1;
+    return 0;
 }
