@@ -1,20 +1,27 @@
 #include <iostream>
 
 int main() {
-    int n, m, k = 0;
-    std::cin >> n >> m >> k;
-    if (k % n == 0 || k % m == 0)
+    int temp, n, m, x, y = 0;
+    std::cin >> n >> m >> x >> y;
+    if (n > m)
     {
-        if (k > (n * m - n) && k > (n * m - m))
-        {
-            std::cout << "NO";
-        }
-        else
-        {
-            std::cout << "YES";
-        }
+        temp = m;
+        m = n;
+        n = temp;
     }
+    if (y <= m - y && y <= n - x && y <= x)
+    {
+        std::cout << y;
+    }
+    else if (x <= m - y && x <= n - x && x <= y)
+    {
+        std::cout << x;
+    }
+    else if (m - y <= n - x)
+    {
+        std::cout << m - y;
+    }
+    else std::cout << n - x;
 
-    else std::cout << "NO";
     return 0;
 }
