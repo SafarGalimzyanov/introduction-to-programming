@@ -8,11 +8,11 @@ int main() {
 	std::cin >> n;
 	std::vector <int> a(n);
 
-	//ищем положительное
+	//ищем нечётное
 	for (i = 0; i < n; ++i)
 	{
 		std::cin >> a[i];
-		if (a[i] > 0)
+		if (a[i] % 2 != 0)
 		{
 			temp = a[i];
 			//выходим из цикла с найденным нечётным и его индексом
@@ -24,12 +24,13 @@ int main() {
 	for (; i < n; ++i)
 	{
 		std::cin >> a[i];
-		if (a[i] > 0 && a[i] < temp)
+		if (a[i] % 2 != 0 && a[i] < temp)
 		{
 			temp = a[i];
 		}
 	}
 	//вывод
+	//если не нашли нечётных, то всё равно выведет ноль
 	std::cout << temp;
 	return 0;
 }
