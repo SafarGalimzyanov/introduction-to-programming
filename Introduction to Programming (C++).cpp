@@ -2,34 +2,51 @@
 #include <vector>
 
 int main() {
-	int n = 0, m = 0, i = 0, j = 0, iMax = 0, jMax = 0;
+	int n = 0, i = 0, j = 0;
 
-	std::cin >> n >> m;
+	//считывание размера вектора
+	std::cin >> n;
 
 	//проверка на ввод нулевого вектора
-	if (n < 1 && m < 1)
+	if (n < 1)
 	{
 		return 0;
 	}
 
 	//инициализация двумерного вектора
-	std::vector<std::vector<int>> array(n, std::vector<int>(m));
+	std::vector<std::vector<int>> array(n, std::vector<int>(n));
 
-	//поиск бОльшего элемента в строке и переход к следующей строке
+
+
+	//заполнение звёздочек единицами
 	for (; i < n; ++i)
 	{
-		for (j = 0; j < m; ++j)
+		for (j = 0; j < n; ++j)
 		{
-			std::cin >> array[i][j];
-			if (array[i][j] > array[iMax][jMax])
+			if (i == j || i + j == n - 1 || i == n / 2 || j == n / 2)
 			{
-				iMax = i;
-				jMax = j;
+				array[i][j] = 1;
 			}
+
 		}
 	}
 
 	//вывод
-	std::cout << iMax << " " << jMax;
+	for (i = 0; i < n; ++i)
+	{
+		for (j = 0; j < n; ++j)
+		{
+			if (array[i][j] == 1)
+			{
+				std::cout << "* ";
+			}
+			else
+			{
+				std::cout << ". ";
+			}
+
+		}
+		std::cout << std::endl;
+	}
 	return 0;
 }
