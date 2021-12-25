@@ -1,16 +1,16 @@
 #include <iostream>
+#include <iomanip>
+#include <cmath>
 
 int main() {
-	int r = 0, k = 0, p = 0, y = 0, i = 0;
-	std::cin >> p >> r >> k >> y;
-	k = (r * 100 + k);
-	while (i < y)
+	int sum = 0, num = 0, i = 0;
+	std::cin >> num;
+	while (num != 0)
 	{
-		k = k * (p + 100) / 100;
+		sum += num;
+		std::cin >> num;
 		++i;
 	}
-	r = k / 100;
-	k = k % 100;
-	std::cout << r << " " << k;
+	std::cout << std::setprecision(11) << std::fixed << double(sum) / i;
 	return 0;
 }
