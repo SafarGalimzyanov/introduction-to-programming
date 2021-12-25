@@ -2,34 +2,37 @@
 #include <vector>
 
 int main() {
-	int i = 0, j = 0;
+	int i = 0, j = 0, start = 0, end = 0, numOfPins = 0, numOfThrows = 0;
 
-	//инициализация массива
-	std::vector <int> array(16);
+	//число кеглей и бросков
+	std::cin >> numOfPins;
+	std::cin >> numOfThrows;
 
-	//считывание данных в массив
-	for (; i < 16; ++i)
+	//инициализация вектора кеглей
+	std::vector <int> pins(numOfPins);
+	//тут лежат нули
+	//теперь идём по значениям и в соответствующий индекс (но с минус один) записываем единицу
+	for (i = 0; i < numOfThrows * 2; i += 2)
 	{
-		std::cin >> array[i];
-	}
-
-	for (i = 0; i < 16; i += 2)
-	{
-		//выбран i-ый элемент
-		for (j = i + 2; j < 16; j += 2)
+		std::cin >> j;
+		std::cin >> end;
+		for (; j <= end; ++j)
 		{
-			if (array[i] == array[j] || array[i + 1] == array[j + 1]
-				|| array[i] - array[i + 1] == array[j] - array[j + 1]
-				|| array[i] + array[i + 1] == array[j] + array[j + 1])
-			{
-				std::cout << "YES";
-				//завершаем программу, если ферзи бьют друг друга
-				return 0;
-			}
-			else {}
+			pins[j - 1] = 1;
 		}
 	}
 
-	std::cout << "NO";
+	//вывод
+	for (j = 0; j < numOfPins; ++j)
+	{
+		if (pins[j] == 0)
+		{
+			std::cout << "I";
+		}
+		else
+		{
+			std::cout << ".";
+		}
+	}
 	return 0;
 }
