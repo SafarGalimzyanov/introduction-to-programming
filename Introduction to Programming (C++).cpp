@@ -2,42 +2,43 @@
 #include <vector>
 
 int main() {
-	int n = 0, i = 0, temp = 0, j = 0, numOfSameElement = 0, numOfPairs = 0;
+	int n = 0, i = 0, j = 0, numOfSameElement = 0;
 
-	//инициализаци€ вектора
+	//инициализаци€ массива
 	std::cin >> n;
-	std::vector <int> a(n);
+	std::vector <int> array(n);
 
-	//считываем данные в массив:
-	for (i = 0; i < n; ++i)
+	//считывание данных в массив
+	for (; i < n; ++i)
 	{
-		std::cin >> a[i];
+		std::cin >> array[i];
 	}
 
-	//определение числа пар элементов
+	//поиск повторов
 	for (i = 0; i < n; ++i)
 	{
 		//выбран i-ый элемент
-		temp = a[i];
-		for (j = i + 1; j < n; ++j)
+
+		//свер€ем со всем циклом
+		for (j = 0; j < n; ++j)
 		{
-			//свер€ем со всем циклом
-			//кроме i-го и раньше
-			if (temp == a[j])
+			if (array[i] == array[j])
 			{
+				//считаем число повторов элемента a[i]
 				++numOfSameElement;
 			}
+			else {}
 		}
-		//считаем число пар
-		numOfPairs += numOfSameElement;
-		//обнул€ем счЄтчик одинаковых элементов
+		//если не были найдены повторы, выводим
+		if (numOfSameElement == 1)
+		{
+			std::cout << array[i] << " ";
+		}
+		else {}
+
+		//обнуление счЄтчика
 		numOfSameElement = 0;
 
 	}
-
-	//вывод
-	std::cout << numOfPairs;
-
-	return 0;
 	return 0;
 }
