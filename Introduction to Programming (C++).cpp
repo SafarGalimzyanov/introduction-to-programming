@@ -5,26 +5,29 @@ int main() {
 	int f1 = 0;
 	int f2 = 0;
 	int i = 1;
-	int n = 0;
-	std::cin >> n;
-	if (n == 0)
+	int a = 0;
+	std::cin >> a;
+	if (a == 2)
 	{
-		std::cout << 0;
+		std::cout << 3;
 	}
-	if (n == 1)
+	else
 	{
-		std::cout << 1;
-	}
-	if (n > 1)
-	{
-		while (i < n)
+		while (f < a)
 		{
 			f2 = f1;
 			f1 = f;
 			f = f1 + f2;
 			++i;
 		}
-		std::cout << f;
+		if (a % f == 0)
+		{
+			std::cout << i;
+		}
+		else
+		{
+			std::cout << -1;
+		}
 	}
 
 	return 0;
