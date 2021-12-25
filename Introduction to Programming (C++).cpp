@@ -1,10 +1,14 @@
 #include <iostream>
 
 int main() {
-	int r = 0, k = 0, p = 0;
-	std::cin >> p >> r >> k;
+	int r = 0, k = 0, p = 0, y = 0, i = 0;
+	std::cin >> p >> r >> k >> y;
 	k = (r * 100 + k);
-	k = k * (p + 100) / 100;
+	while (i < y)
+	{
+		k = k * (p + 100) / 100;
+		++i;
+	}
 	r = k / 100;
 	k = k % 100;
 	std::cout << r << " " << k;
