@@ -2,43 +2,34 @@
 #include <vector>
 
 int main() {
-	int n = 0, i = 0, j = 0, numOfSameElement = 0;
+	int i = 0, j = 0;
 
 	//инициализация массива
-	std::cin >> n;
-	std::vector <int> array(n);
+	std::vector <int> array(16);
 
 	//считывание данных в массив
-	for (; i < n; ++i)
+	for (; i < 16; ++i)
 	{
 		std::cin >> array[i];
 	}
 
-	//поиск повторов
-	for (i = 0; i < n; ++i)
+	for (i = 0; i < 16; i += 2)
 	{
 		//выбран i-ый элемент
-
-		//сверяем со всем циклом
-		for (j = 0; j < n; ++j)
+		for (j = i + 2; j < 16; j += 2)
 		{
-			if (array[i] == array[j])
+			if (array[i] == array[j] || array[i + 1] == array[j + 1]
+				|| array[i] - array[i + 1] == array[j] - array[j + 1]
+				|| array[i] + array[i + 1] == array[j] + array[j + 1])
 			{
-				//считаем число повторов элемента a[i]
-				++numOfSameElement;
+				std::cout << "YES";
+				//завершаем программу, если ферзи бьют друг друга
+				return 0;
 			}
 			else {}
 		}
-		//если не были найдены повторы, выводим
-		if (numOfSameElement == 1)
-		{
-			std::cout << array[i] << " ";
-		}
-		else {}
-
-		//обнуление счётчика
-		numOfSameElement = 0;
-
 	}
+
+	std::cout << "NO";
 	return 0;
 }
