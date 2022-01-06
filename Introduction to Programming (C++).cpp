@@ -2,47 +2,46 @@
 #include <vector>
 
 int main() {
-	int n = 0, i = 0, j = 0, k = 0;
+	int n = 0, m = 0, i = 0, j = 0, k = 0;
 
 	//считывание размера вектора
-	std::cin >> n;
+	std::cin >> n >> m;
 
 	//проверка на ввод нулевого вектора
-	if (n < 1)
+	if (n < 1 || m < 1)
 	{
 		return 0;
 	}
 
 	//инициализация двумерного вектора
-	std::vector<std::vector<int>> array(n, std::vector<int>(n));
+	std::vector<std::vector<int>> array(n, std::vector<int>(m));
 
 	for (; i < n; ++i)
 	{
-		for (j = 0; j < n; ++j)
+		for (j = 0; j < m; ++j)
 		{
 			std::cin >> array[i][j];
 		}
 	}
 
-	//считывание номера диагонали
-	std::cin >> k;
+	//инициализация транспонированного двумерного вектора
+	std::vector<std::vector<int>> transpose(m, std::vector<int>(n));
 
-	//выбор оси для начального смещения
-	if (k > 0)
+	for (i = 0; i < n; ++i)
 	{
-		i = k;
-		j = 0;
-	}
-	else
-	{
-		j = -k;
-		i = 0;
+		for (j = 0; j < m; ++j)
+		{
+			transpose[j][i] = array[i][j];
+		}
 	}
 
-	//вывод
-	for (; i < n && j < n; ++i, ++j)
+	for (i = 0; i < m; ++i)
 	{
-		std::cout << array[i][j] << " ";
+		for (j = 0; j < n; ++j)
+		{
+			std::cout << transpose[i][j] << " ";
+		}
+		std::cout << std::endl;
 	}
 	return 0;
 }
