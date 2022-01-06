@@ -2,7 +2,7 @@
 #include <vector>
 
 int main() {
-	int n = 0, i = 0, j = 0;
+	int n = 0, i = 0, j = 0, k = 0;
 
 	//считывание размера вектора
 	std::cin >> n;
@@ -21,17 +21,28 @@ int main() {
 		for (j = 0; j < n; ++j)
 		{
 			std::cin >> array[i][j];
-			//проверка на неравенство симметричных элементов
-			if (j < i && array[i][j] != array[j][i])
-			{
-				//вывод
-				std::cout << "NO";
-				return 0;
-			}
 		}
 	}
 
+	//считывание номера диагонали
+	std::cin >> k;
+
+	//выбор оси для начального смещения
+	if (k > 0)
+	{
+		i = k;
+		j = 0;
+	}
+	else
+	{
+		j = -k;
+		i = 0;
+	}
+
 	//вывод
-	std::cout << "YES";
+	for (; i < n && j < n; ++i, ++j)
+	{
+		std::cout << array[i][j] << " ";
+	}
 	return 0;
 }
