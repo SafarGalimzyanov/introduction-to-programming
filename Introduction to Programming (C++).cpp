@@ -2,7 +2,7 @@
 #include <vector>
 
 int main() {
-	int n = 0, m = 0, i = 0, j = 0, k = 0, numOfEmptySeats = 0;
+	int n = 0, m = 0, i = 0, j = 0, k = 0;
 
 	//считывание размера вектора
 	std::cin >> n >> m;
@@ -14,50 +14,34 @@ int main() {
 	}
 
 	//инициализация двумерного вектора
-	std::vector<std::vector<int>> seats(n, std::vector<int>(m));
+	std::vector<std::vector<int>> array(n, std::vector<int>(m));
 
 	for (; i < n; ++i)
 	{
 		for (j = 0; j < m; ++j)
 		{
-			std::cin >> seats[i][j];
+			std::cin >> array[i][j];
 		}
 	}
 
-	//считывание количества мест
-	std::cin >> k;
+	//инициализация транспонированного двумерного вектора
+	std::vector<std::vector<int>> turned(m, std::vector<int>(n));
 
-	if (k > m)
-	{
-		std::cout << 0;
-		return 0;
-	}
-
-	//поиск свободных мест
 	for (i = 0; i < n; ++i)
 	{
 		for (j = 0; j < m; ++j)
 		{
-			if (seats[i][j] == 0)
-			{
-				++numOfEmptySeats;
-			}
-			else
-			{
-				//обнуляем счётчик, если место занято
-				numOfEmptySeats = 0;
-			}
-			if (numOfEmptySeats == k)
-			{
-				//вывод, если нашли ряд с k свободных мест
-				std::cout << i + 1;
-				return 0;
-			}
+			turned[j][n - i - 1] = array[i][j];
 		}
-		numOfEmptySeats = 0;
 	}
 
-	//вывод
-	std::cout << 0;
+	for (i = 0; i < m; ++i)
+	{
+		for (j = 0; j < n; ++j)
+		{
+			std::cout << turned[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 	return 0;
 }
