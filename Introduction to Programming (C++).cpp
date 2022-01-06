@@ -16,18 +16,20 @@ int main() {
 	//инициализация двумерного вектора
 	std::vector<std::vector<int>> array(n, std::vector<int>(n));
 
-
-
-	//заполнение звёздочек единицами
 	for (; i < n; ++i)
 	{
 		for (j = 0; j < n; ++j)
 		{
-			if (i == j || i + j == n - 1 || i == n / 2 || j == n / 2)
+			if (i > j)
 			{
-				array[i][j] = 1;
+				array[i][j] = i - j;
+				array[j][i] = i - j;
 			}
-
+			else
+			{
+				array[i][j] = j - i;
+				array[j][i] = j - i;
+			}
 		}
 	}
 
@@ -36,15 +38,7 @@ int main() {
 	{
 		for (j = 0; j < n; ++j)
 		{
-			if (array[i][j] == 1)
-			{
-				std::cout << "* ";
-			}
-			else
-			{
-				std::cout << ". ";
-			}
-
+			std::cout << array[i][j] << " ";
 		}
 		std::cout << std::endl;
 	}
