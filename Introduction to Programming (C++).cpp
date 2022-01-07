@@ -1,18 +1,21 @@
 #include <iostream>
-//#include <string>
+#include <string>
 
 int main() {
 
-	char c;
-	std::cin >> c;
-	if (c == char(toupper(c)))
+	std::string s;
+	getline(std::cin, s);
+
+	int cnt = 1;
+
+	for (auto c : s)
 	{
-		std::cout << char(tolower(c));
+		if (isspace(c))
+		{
+			++cnt;
+		}
 	}
-	else
-	{
-		std::cout << char(toupper(c));
-	}
+	std::cout << cnt;
 
 	return 0;
 }
