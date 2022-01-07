@@ -1,50 +1,32 @@
 #include <iostream>
 
-bool MinDivisor(int num)
+double power(double  num, int pow)
 {
-	if (num % 2 == 0)
+	if (pow == 0)
 	{
-		if (num == 2)
-		{
-			return true;
-		}
-		return false;
+		return 1;
 	}
-
-	//инициализация минимального делителя
-	int min = 3, q = 9, s = 8;
-
-	//цикл
-	for (; q <= num; min += 2, s += 8, q += s)
+	if (pow % 2 != 0)
 	{
-		if (num % min == 0)
-		{
-			//возврат значения
-			return false;
-		}
+		return num * power(num * num, pow / 2);
 	}
-
-	//возврат значения
-	return true;
+	else
+	{
+		return power(num * num, pow / 2);
+	}
 }
 
 int main() {
 
 	//инициализация переменных
-	int num = 0;
+	double num = 0;
+	int pow = 0;
 
 	//считывание значений
-	std::cin >> num;
+	std::cin >> num >> pow;
 
 	//вывод
-	if (MinDivisor(num))
-	{
-		std::cout << "YES";
-	}
-	else
-	{
-		std::cout << "NO";
-	}
+	std::cout << power(num, pow);
 
 	return 0;
 }
