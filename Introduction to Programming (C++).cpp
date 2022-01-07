@@ -1,10 +1,14 @@
 #include <iostream>
 
-int MinDivisor(int num)
+bool MinDivisor(int num)
 {
 	if (num % 2 == 0)
 	{
-		return 2;
+		if (num == 2)
+		{
+			return true;
+		}
+		return false;
 	}
 
 	//инициализация минимального делителя
@@ -16,12 +20,12 @@ int MinDivisor(int num)
 		if (num % min == 0)
 		{
 			//возврат значения
-			return min;
+			return false;
 		}
 	}
 
 	//возврат значения
-	return num;
+	return true;
 }
 
 int main() {
@@ -33,7 +37,14 @@ int main() {
 	std::cin >> num;
 
 	//вывод
-	std::cout << MinDivisor(num);
+	if (MinDivisor(num))
+	{
+		std::cout << "YES";
+	}
+	else
+	{
+		std::cout << "NO";
+	}
 
 	return 0;
 }
