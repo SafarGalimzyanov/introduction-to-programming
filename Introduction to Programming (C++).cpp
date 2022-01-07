@@ -1,28 +1,31 @@
 #include <iostream>
-#include <set>
+#include <map>
+#include <string>
 
 int main() {
-	std::set <int> s1, s2;
-	int n;
+	std::map <std::string, std::string> dic;
+	int n = 0;
 	std::cin >> n;
-	for (int i = 0, x = 0; i < n; ++i)
+	std::string str1 = "", str2 = "";
+	for (int i = 0; i < n; ++i)
 	{
-		std::cin >> x;
-		s1.insert(x);
+		std::cin >> str1 >> str2;
+		dic[str1] = str2;
 	}
-	int m;
-	std::cin >> m;
-	for (int i = 0, x = 0; i < m; ++i)
+	std::cin >> str1;
+	for (auto now : dic)
 	{
-		std::cin >> x;
-		s2.insert(x);
-	}
-
-	for (auto k : s1)
-	{
-		if (s2.find(k) != s2.end())
+		//проверяем ключ
+		if (now.first == str1)
 		{
-			std::cout << k << " ";
+			std::cout << now.second;
+			return 0; //для предотвращения лишних проверок
+		}
+		//проверяем значение
+		else if (now.second == str1)
+		{
+			std::cout << now.first;
+			return 0; //для предотвращения лишних проверок
 		}
 	}
 
