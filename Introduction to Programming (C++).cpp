@@ -1,20 +1,37 @@
 #include <iostream>
+#include <vector>
 
-double sum(double  num)
+double fibonacci(int num, std::vector <int>& m)
 {
-	std::cin >> num;
-	if (num != 0)
+	if (num > 2)
 	{
-		return num + sum(num);
+		if (m[num] > 0)
+		{
+			return m[num];
+		}
+		else
+		{
+			return m[num] = fibonacci(num - 1, m) + fibonacci(num - 2, m);
+		}
+
 	}
-	return 0;
+	else
+	{
+		return 1;
+	}
 }
 
 int main() {
 
-	//считывание значений
+	int num = 0;
 
-	std::cout << sum(0);
+	//считывание значений
+	std::cin >> num;
+
+	std::vector <int> array(num + 1, 0);
+
+	//вывод
+	std::cout << fibonacci(num, array);
 
 	return 0;
 }
