@@ -1,27 +1,34 @@
 #include <iostream>
 
-bool IsPointInSquare(double x, double y, double xc, double yc, double r)
+double power(double a, int n)
 {
-	return ((y - yc) * (y - yc) + (x - xc) * (x - xc) <= r * r);
+	if (n > 0)
+	{
+		--n;
+		return a * power(a, n);
+	}
+	else if (n < 0)
+	{
+		++n;
+		return (1 / a) * power(a, n);
+	}
+	else
+	{
+		return 1;
+	}
 }
 
 int main() {
 
 	//инициализация переменных
-	double x = 0, y = 0, xc = 0, yc = 0, r = 0;
+	double a = 0;
+	int n = 0;
 
 	//считывание значений
-	std::cin >> x >> y >> xc >> yc >> r;
+	std::cin >> a >> n;
 
 	//вывод
-	if (IsPointInSquare(x, y, xc, yc, r))
-	{
-		std::cout << "YES";
-	}
-	else
-	{
-		std::cout << "NO";
-	}
+	std::cout << power(a, n);
 
 	return 0;
 }
