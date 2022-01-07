@@ -6,16 +6,18 @@ int main() {
 	std::string s;
 	getline(std::cin, s);
 
+	int length = s.size();
 	int cnt = 1;
 
-	for (auto c : s)
+	for (int i = 0; i < length / 2; ++i)
 	{
-		if (isspace(c))
+		if (s[i] != s[length - i - 1])
 		{
-			++cnt;
+			std::cout << "no";
+			return 0;
 		}
 	}
-	std::cout << cnt;
+	std::cout << "yes";
 
 	return 0;
 }
