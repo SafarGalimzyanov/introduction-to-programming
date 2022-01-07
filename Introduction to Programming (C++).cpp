@@ -3,21 +3,19 @@
 
 int main() {
 
-	std::string s;
-	getline(std::cin, s);
+	std::string string = "", longest = "";
 
-	int length = s.size();
-	int cnt = 1;
-
-	for (int i = 0; i < length / 2; ++i)
+	//после ввода строки нажимаем Enter, Ctrl+Z, Enter
+	//тогда компилятор считывает всю строку, а по её окончании выдаст false / -1
+	while (std::cin >> string)
 	{
-		if (s[i] != s[length - i - 1])
+		if (string.length() > longest.length())
 		{
-			std::cout << "no";
-			return 0;
+			longest = string;
 		}
 	}
-	std::cout << "yes";
+	//вывод
+	std::cout << longest << std::endl;
 
 	return 0;
 }
