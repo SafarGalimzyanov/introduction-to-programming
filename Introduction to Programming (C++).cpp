@@ -2,30 +2,35 @@
 #include <vector>
 #include <algorithm>
 #include <utility>
+#include <string>
 
-bool DistSort(std::pair <int, int> a, std::pair <int, int> b)
+bool rule_of_sort(std::pair <int, std::string> a, std::pair <int, std::string> b)
 {
-	return (a.first * a.first + a.second * a.second) < (b.first * b.first + b.second * b.second);
+	return a.first > b.first;
 }
 
 int main() {
 
-	//кол-во точек
+	//кол-во учеников
 	int n;
 	std::cin >> n;
 
-	//заполнение списка
-	std::vector <std::pair <int, int>> list(n);
+	//заполнение списка учеников
+	std::vector <std::pair <int, std::string>> list(n);
 	for (int i = 0; i < n; ++i)
 	{
-		std::cin >> list[i].first >> list[i].second;
+		std::string last_name, first_name;
+		int math_score = 0, physics_score = 0, it_score = 0;
+		std::cin >> last_name >> first_name >> math_score >> physics_score >> it_score;
+		list[i] = { math_score + physics_score + it_score, last_name + " " + first_name };
 	}
 
-	sort(list.begin(), list.end(), DistSort);
+	stable_sort(list.begin(), list.end(), rule_of_sort);
 
+	//вывод
 	for (auto now : list)
 	{
-		std::cout << now.first << " " << now.second << std::endl;
+		std::cout << now.second << std::endl;
 	}
 
 	return 0;
