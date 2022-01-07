@@ -1,34 +1,39 @@
 #include <iostream>
 
-double power(double a, int n)
+int MinDivisor(int num)
 {
-	if (n > 0)
+	if (num % 2 == 0)
 	{
-		--n;
-		return a * power(a, n);
+		return 2;
 	}
-	else if (n < 0)
+
+	//инициализация минимального делителя
+	int min = 3, q = 9, s = 8;
+
+	//цикл
+	for (; q <= num; min += 2, s += 8, q += s)
 	{
-		++n;
-		return (1 / a) * power(a, n);
+		if (num % min == 0)
+		{
+			//возврат значения
+			return min;
+		}
 	}
-	else
-	{
-		return 1;
-	}
+
+	//возврат значения
+	return num;
 }
 
 int main() {
 
 	//инициализация переменных
-	double a = 0;
-	int n = 0;
+	int num = 0;
 
 	//считывание значений
-	std::cin >> a >> n;
+	std::cin >> num;
 
 	//вывод
-	std::cout << power(a, n);
+	std::cout << MinDivisor(num);
 
 	return 0;
 }
