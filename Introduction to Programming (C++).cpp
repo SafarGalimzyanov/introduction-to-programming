@@ -1,32 +1,20 @@
 #include <iostream>
 
-double power(double  num, int pow)
+double sum(double  num)
 {
-	if (pow == 0)
+	std::cin >> num;
+	if (num != 0)
 	{
-		return 1;
+		return num + sum(num);
 	}
-	if (pow % 2 != 0)
-	{
-		return num * power(num * num, pow / 2);
-	}
-	else
-	{
-		return power(num * num, pow / 2);
-	}
+	return 0;
 }
 
 int main() {
 
-	//инициализация переменных
-	double num = 0;
-	int pow = 0;
-
 	//считывание значений
-	std::cin >> num >> pow;
 
-	//вывод
-	std::cout << power(num, pow);
+	std::cout << sum(0);
 
 	return 0;
 }
