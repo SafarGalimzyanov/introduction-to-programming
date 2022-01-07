@@ -2,7 +2,7 @@
 
 bool IsPointInSquare(double x, double y)
 {
-	return x * x <= 1 && y * y <= 1;
+	return (x + y <= 1 && -x + y <= 1 && x - y <= 1 && -x - y <= 1);
 }
 
 int main() {
