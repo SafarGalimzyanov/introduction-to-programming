@@ -5,15 +5,14 @@ int main() {
 
 	char c;
 	std::cin >> c;
-	if (c >= '0' && c <= '9')
+	if (c == char(toupper(c)))
 	{
-		std::cout << "yes";
+		std::cout << char(tolower(c));
 	}
 	else
 	{
-		std::cout << "no";
+		std::cout << char(toupper(c));
 	}
-
 
 	return 0;
 }
