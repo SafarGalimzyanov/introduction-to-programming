@@ -1,23 +1,19 @@
 #include <iostream>
+#include <cmath>
 
-int min(int i, int j)
+double distance(double x1, double y1, double x2, double y2)
 {
-	return i < j ? i : j;
-}
-
-int min4(int a, int b, int c, int d)
-{
-	return min(a, b) < min(c, d) ? min(a, b) : min(c, d);
+	return sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
 }
 
 int main() {
 
 	//инициализация переменных
-	int num1 = 0, num2 = 0, num3 = 0, num4 = 0;
+	double x1 = 0, y1 = 0, x2 = 0, y2 = 0;
 	//считывание значений
-	std::cin >> num1 >> num2 >> num3 >> num4;
+	std::cin >> x1 >> y1 >> x2 >> y2;
 	//вывод
-	std::cout << min4(num1, num2, num3, num4);
+	std::cout << distance(x1, y1, x2, y2);
 
 	return 0;
 }
