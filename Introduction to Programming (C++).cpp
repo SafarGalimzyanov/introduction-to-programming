@@ -3,19 +3,57 @@
 
 int main() {
 
-	std::string string = "", longest = "";
+	std::string string = "", temp = "";
+	std::cin >> string;
 
-	//после ввода строки нажимаем Enter, Ctrl+Z, Enter
-	//тогда компилятор считывает всю строку, а по её окончании выдаст false / -1
-	while (std::cin >> string)
+	//если длина меньше наименьшей возможной (0.0.0.0) или больше наибольшей возможной (255.255.255.255)
+	if (string.length() < 7 || string.length() > 15)
 	{
-		if (string.length() > longest.length())
+		std::cout << "NO";
+		return 0;
+	}
+	//для проверки наличия точки в начале
+	int dot = 1;
+	int dotCnt = 0, i = 0;
+
+	for (char c : string)
+	{
+		if (c >= '0' && c <= '9' && i < 3)
 		{
-			longest = string;
+			//обнуляем счётчик точек
+			dot = 0;
+			//запоминаем введённую цифру в строке
+			temp = temp + c;
+			//проверка для однозначного и двузначных чисел 
+			if (i == 1 && temp[0] == '0' || i == 2 && (temp[0] > '2' || temp[0] == '2' && temp[1] > '5' || temp[0] == '2' && temp[1] == '5' && temp[2] > '5'))
+			{
+				std::cout << "NO";
+				return 0;
+			}
+			++i;
+		}
+		//если символ после точки не точка и число точек не превышает максимальное
+		else if (c == '.' && ++dot == 1 && ++dotCnt < 4)
+		{
+			//обнуляем счётчик цифр и строку
+			i = 0;
+			temp = "";
+		}
+		//если символ не цифра или точка ИЛИ цифр или точек больше чем должно быть 
+		else
+		{
+			std::cout << "NO";
+			return 0;
 		}
 	}
-	//вывод
-	std::cout << longest << std::endl;
+	//если суммарное число точек отлично от трёх или есть точка в конце
+	if (dotCnt != 3 || dot != 0)
+	{
+		std::cout << "NO";
+		return 0;
+	}
+
+	std::cout << "YES";
 
 	return 0;
 }
