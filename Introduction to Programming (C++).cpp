@@ -3,30 +3,29 @@
 #include <algorithm>
 #include <utility>
 
+bool DistSort(std::pair <int, int> a, std::pair <int, int> b)
+{
+	return (a.first * a.first + a.second * a.second) < (b.first * b.first + b.second * b.second);
+}
 
 int main() {
 
-	//считывание числа участников
+	//кол-во точек
 	int n;
 	std::cin >> n;
 
-	//список участников
+	//заполнение списка
 	std::vector <std::pair <int, int>> list(n);
-
-	//заполнение вектора
 	for (int i = 0; i < n; ++i)
 	{
-		std::cin >> list[i].second >> list[i].first;
-		list[i].first = -list[i].first;
+		std::cin >> list[i].first >> list[i].second;
 	}
 
-	//сортировка
-	sort(list.begin(), list.end());
+	sort(list.begin(), list.end(), DistSort);
 
-	//вывод
 	for (auto now : list)
 	{
-		std::cout << now.second << " " << -now.first << std::endl;
+		std::cout << now.first << " " << now.second << std::endl;
 	}
 
 	return 0;
