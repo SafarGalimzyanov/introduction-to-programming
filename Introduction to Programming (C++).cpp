@@ -8,9 +8,16 @@ int main() {
 	for (int i = 0, x = 0; i < n; i++)
 	{
 		std::cin >> x;
+		if (s.find(x) != s.end())
+		{
+			std::cout << "YES\n";
+		}
+		else
+		{
+			std::cout << "NO\n";
+		}
 		s.insert(x);
 	}
-	std::cout << s.size();
 
 	return 0;
 }
