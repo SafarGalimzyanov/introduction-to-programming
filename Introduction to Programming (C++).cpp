@@ -1,40 +1,33 @@
 #include <iostream>
-#include <set>
+#include <vector>
 #include <algorithm>
+#include <utility>
+
 
 int main() {
 
-	//считывание размера ноги
-	int sze;
-	std::cin >> sze;
-
-	//считывание кол-ва пар обуви в магазине
+	//считывание числа участников
 	int n;
 	std::cin >> n;
 
-	//массив имеющихся размеров обуви в магазине
-	std::set <int> a;
-	for (int temp = 0, i = 0; i < n; ++i)
+	//список участников
+	std::vector <std::pair <int, int>> list(n);
+
+	//заполнение вектора
+	for (int i = 0; i < n; ++i)
 	{
-		std::cin >> temp;
-		a.insert(temp);
+		std::cin >> list[i].second >> list[i].first;
+		list[i].first = -list[i].first;
 	}
 
-	//кол-во подходящей обуви
-	int cnt = 0;
-
-	//надеваем обувь
-	for (auto now : a)
-	{
-		if (now >= sze)
-		{
-			sze = now + 3; //запоминаем размер надетой обуви
-			++cnt;
-		}
-	}
+	//сортировка
+	sort(list.begin(), list.end());
 
 	//вывод
-	std::cout << cnt;
+	for (auto now : list)
+	{
+		std::cout << now.second << " " << -now.first << std::endl;
+	}
 
 	return 0;
 }
